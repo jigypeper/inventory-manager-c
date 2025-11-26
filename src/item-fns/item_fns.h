@@ -8,9 +8,9 @@ typedef struct item {
   int part_number;
   // set name to max len for simplicity
   char part_name[NAME_LEN + 1]; 
-  item *parent_part;
-  item *left_part;
-  item *right_part;
+  struct item *parent_part;
+  struct item *left_part;
+  struct item *right_part;
 } item;
 
 void insert_item(item *root);
