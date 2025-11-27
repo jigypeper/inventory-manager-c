@@ -8,14 +8,16 @@ typedef struct item {
   int part_number;
   // set name to max len for simplicity
   char part_name[NAME_LEN + 1]; 
+  int qty;
   struct item *left_part;
   struct item *right_part;
 } item;
 
 item* create_item_node(item *part);
 item* insert_item_node(item *root, item *part);
-void delete_item_node(item *root, int part_number);
+item* delete_item_node(item *root, int part_number);
 item* search_item_node(item *root, int part_number);
+item* find_min(item *root);
 void insert_item(item *root);
 void update_item(item *root, int part_number);
 void delete_item(item *root, int part_number);
