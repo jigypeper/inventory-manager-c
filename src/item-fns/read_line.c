@@ -8,7 +8,7 @@ int read_line(char str[], int n) {
   while (isspace(ch = getchar()));
 
   // reading until spaces and EOF
-  while (ch != ' ' && ch != EOF) {
+  while (ch != '\n' && ch != ' ' && ch != EOF) {
     if (i < n) {
       str[i++] = ch;
     }
