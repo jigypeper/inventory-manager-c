@@ -97,7 +97,8 @@ item* insert_item(item *root) {
   scanf("%d", &part->qty);
 
 if (search_item_node(root, part->part_number) == NULL){
-    root = insert_item_node(root, part);  // Update root, not part
+    // Update root, not part
+    root = insert_item_node(root, part);
   } else {
     printf("Part [%d] already exists\n", part->part_number);
     // Free the allocated memory since we're not using it
