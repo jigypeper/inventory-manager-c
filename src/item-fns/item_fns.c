@@ -113,8 +113,10 @@ void print_item(item *root, int part_number) {
   if (result == NULL) {
     printf("Can't find item: %d\n", part_number);
   } else {
-    printf("Part No.: %d\n", result->part_number);
-    printf("Part Name: %s\n", result->part_name);
-    printf("Quantity: %d\n", result->qty);
+    printf("┌───────────┬─────────────────────────┬────────┐\n");
+    printf("│ %-9s │ %-23s │ %-6s │\n", "Part No.", "Part Name", "Qty");
+    printf("├───────────┼─────────────────────────┼────────┤\n");
+    printf("│ %-9d │ %-23s │ %-6d │\n", result->part_number, result->part_name, result->qty);
+    printf("└───────────┴─────────────────────────┴────────┘\n");
   }
 }
