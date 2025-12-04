@@ -26,6 +26,9 @@ int main(void) {
       case 'Q':
         return 0;
         break;
+      default:
+        printf("\'%c\' is not a valid option\n", command);
+        break;
     }
   }
 
