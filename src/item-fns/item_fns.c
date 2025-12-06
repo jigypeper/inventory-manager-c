@@ -108,6 +108,38 @@ if (search_item_node(root, part->part_number) == NULL){
   return root;
 }
 
+//TODO: need to think of the best way to handle updates, should the user be able to choose what they want to update before giving the options? Or do we check for which items have been populated?
+item* update_item(item *root) {
+  item* existing_part = NULL;
+  int part_number, new_part_number, new_qty;
+  char new_part_name[NAME_LEN];
+
+  printf("Which part do you want to update? [part no.]: ");
+  scanf("%d", &part_number);
+  existing_part = search_item_node(root, part_number);
+  
+  if (existing_part != NULL) {
+    
+    printf("Part no.: ");
+    scanf("%d", &new_part_number);
+
+    printf("New Part name: ");
+    read_line(new_part_name, NAME_LEN);
+  
+    printf("Quantity: ");
+    scanf("%d", &new_qty);
+
+    strcpy(existing_part->part_name, new_part_name);
+    existing_part->part_number = new_part_number;
+    existing_part->qty = new_qty;
+
+    return root;
+  }
+  
+  printf("Part [%d] does not exist in the database, please add it.\n", part_number);
+  return root;
+}
+
 void print_item(item *root, int part_number) {
   item *result = search_item_node(root, part_number);
   if (result == NULL) {
