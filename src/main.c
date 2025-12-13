@@ -9,7 +9,7 @@ int main(void) {
   int part_number;
 
   while (true) {
-    printf("Choose an option\ni: insert a part\nu: update a part\np: print a part\nq: quit\n");
+    printf("Choose an option\ni: insert a part\nu: update a part\nd: delete a part\np: print a part\nq: quit\n");
     scanf(" %c", &command);
     switch (command) {
       case 'i':
@@ -19,6 +19,10 @@ int main(void) {
       case 'u':
       case 'U':
         root = update_item(root);
+        break;
+      case 'd':
+      case 'D':
+        root = delete_item(root);
         break;
       case 'p':
       case 'P':
