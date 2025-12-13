@@ -20,7 +20,7 @@ item* search_item_node(item *root, int part_number);
 item* find_min(item *root);
 item* insert_item(item *root);
 item* update_item(item *root);
-item* delete_item(item *root, int part_number);
+item* delete_item(item *root);
 void search_item(item *root, int part_number);
 void print_item(item *root, int part_number);
 
