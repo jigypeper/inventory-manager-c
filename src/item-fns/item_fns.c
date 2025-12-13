@@ -140,6 +140,25 @@ item* update_item(item *root) {
   return root;
 }
 
+item* delete_item(item *root) {
+  item* existing_part = NULL;
+  int part_number;
+
+  printf("Which part do you want to delete? [part no.]: ");
+  scanf("%d", &part_number);
+  existing_part = search_item_node(root, part_number);
+  
+  if (existing_part != NULL) {
+    
+    root = delete_item_node(root, part_number);
+
+    return root;
+  }
+  
+  printf("Part [%d] does not exist in the database, can't delete it\n", part_number);
+  return root;
+}
+
 void print_item(item *root, int part_number) {
   item *result = search_item_node(root, part_number);
   if (result == NULL) {
