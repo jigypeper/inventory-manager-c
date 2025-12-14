@@ -7,7 +7,7 @@
 typedef struct item {
   int part_number;
   // set name to max len for simplicity
-  char part_name[NAME_LEN + 1]; 
+  char part_name[NAME_LEN + 1];
   int qty;
   struct item *left_part;
   struct item *right_part;
@@ -21,8 +21,11 @@ item* find_min(item *root);
 item* insert_item(item *root);
 item* update_item(item *root);
 item* delete_item(item *root);
+item* build_item_array(item *root);
 void search_item(item *root, int part_number);
 void print_item(item *root, int part_number);
+void print_items(item *root);
+
 
 
 #endif
