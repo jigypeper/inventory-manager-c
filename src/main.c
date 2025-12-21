@@ -9,7 +9,7 @@ int main(void) {
   int part_number;
 
   while (true) {
-    printf("Choose an option\ni: insert a part\nu: update a part\nd: delete a part\np: print a part\nq: quit\n");
+    printf("Choose an option\ni: insert a part\nu: update a part\nd: delete a part\np: print a part\nl: list all parts\nq: quit\n");
     scanf(" %c", &command);
     switch (command) {
       case 'i':
@@ -30,6 +30,10 @@ int main(void) {
         scanf("%d", &part_number);
         print_item(root, part_number);
         break;
+      case 'l':
+      case 'L':
+        print_items(root);
+		break;
       case 'q':
       case 'Q':
         return 0;
