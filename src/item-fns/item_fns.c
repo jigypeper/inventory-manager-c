@@ -14,7 +14,7 @@ item* create_item_node(item *part) {
     new_part->part_number = part->part_number;
     strcpy(new_part->part_name, part->part_name);
     new_part->qty = part->qty;
-  }  
+  }
   return new_part;
 
 }
@@ -22,7 +22,7 @@ item* create_item_node(item *part) {
 item* insert_item_node(item *root, item *part) {
   if (root == NULL) {
     return create_item_node(part);
-  }  
+  }
 
   if (part->part_number < root->part_number) {
     root->left_part = insert_item_node(root->left_part, part);
@@ -57,7 +57,7 @@ item* delete_item_node(item *root, int part_number) {
   if (root == NULL) {
     return root;
   }
-  
+
   if (part_number < root->part_number) {
     root->left_part = delete_item_node(root->left_part, part_number);
   } else if (part_number > root->part_number) {
@@ -86,13 +86,13 @@ item* delete_item_node(item *root, int part_number) {
 
 item* insert_item(item *root) {
   item *part = malloc(sizeof(item));
-  
+
   printf("Part no.: ");
   scanf("%d", &part->part_number);
 
   printf("Part name: ");
   read_line(part->part_name, NAME_LEN);
-  
+
   printf("Quantity: ");
   scanf("%d", &part->qty);
 
@@ -117,15 +117,15 @@ item* update_item(item *root) {
   printf("Which part do you want to update? [part no.]: ");
   scanf("%d", &part_number);
   existing_part = search_item_node(root, part_number);
-  
+
   if (existing_part != NULL) {
-    
+
     printf("Part no.: ");
     scanf("%d", &new_part_number);
 
     printf("New Part name: ");
     read_line(new_part_name, NAME_LEN);
-  
+
     printf("Quantity: ");
     scanf("%d", &new_qty);
 
@@ -135,7 +135,7 @@ item* update_item(item *root) {
 
     return root;
   }
-  
+
   printf("Part [%d] does not exist in the database, please add it.\n", part_number);
   return root;
 }
@@ -147,16 +147,41 @@ item* delete_item(item *root) {
   printf("Which part do you want to delete? [part no.]: ");
   scanf("%d", &part_number);
   existing_part = search_item_node(root, part_number);
-  
+
   if (existing_part != NULL) {
-    
+
     root = delete_item_node(root, part_number);
 
     return root;
   }
-  
+
   printf("Part [%d] does not exist in the database, can't delete it\n", part_number);
   return root;
+}
+
+void in_order_collect(item *root, item ***address_array, int *index, int *capacity) {
+  if (root == NULL) {
+	return;
+  }
+
+  if (*index >= *capacity) {
+	*capacity *= 2;
+    item **temp = (item **)realloc(*address_array, *capacity * sizeof(item *));
+	*address_array = temp;
+  }
+
+  in_order_collect(root->left_part, address_array, index, capacity);
+  (*address_array)[(*index)++] = root;
+  in_order_collect(root->right_part, address_array, index, capacity);
+}
+
+item** build_item_array(item *root, int *array_length) {
+  int count = 0, capacity = 10;
+  item **item_array = (item**) malloc(capacity*sizeof(item*));
+
+  in_order_collect(root, &item_array, &count, &capacity);
+  *array_length = count;
+  return item_array;
 }
 
 void print_item(item *root, int part_number) {
@@ -170,4 +195,25 @@ void print_item(item *root, int part_number) {
     printf("│ %-9d │ %-23s │ %-6d │\n", result->part_number, result->part_name, result->qty);
     printf("└───────────┴─────────────────────────┴────────┘\n");
   }
+}
+
+void print_items(item *root) {
+  //TODO: need to free the memory of the array after print completes?
+  int array_length = 0;
+  item **inventory = build_item_array(root, &array_length);
+
+  if (array_length == 0) {
+    printf("No items in the database! Please add some\n");
+	return;
+  }
+
+  printf("┌───────────┬─────────────────────────┬────────┐\n");
+  printf("│ %-9s │ %-23s │ %-6s │\n", "Part No.", "Part Name", "Qty");
+
+  for (int i = 0; i < array_length; i++) {
+	printf("├───────────┼─────────────────────────┼────────┤\n");
+	printf("│ %-9d │ %-23s │ %-6d │\n", inventory[i]->part_number, inventory[i]->part_name, inventory[i]->qty);
+  }
+
+  printf("└───────────┴─────────────────────────┴────────┘\n");
 }
