@@ -1,0 +1,17 @@
+[
+  {
+    "directory": "/Users/Leo/Code/inventory-manager-c",
+    "command": "clang -Wall -Wextra -std=c11 -g -I/Users/Leo/Code/inventory-manager-c/src -I/Users/Leo/Code/inventory-manager-c/src/item-fns -c src/main.c -o build/main.o",
+    "file": "src/main.c"
+  },
+  {
+    "directory": "/Users/Leo/Code/inventory-manager-c",
+    "command": "clang -Wall -Wextra -std=c11 -g -I/Users/Leo/Code/inventory-manager-c/src -I/Users/Leo/Code/inventory-manager-c/src/item-fns -c src/item-fns/item_fns.c -o build/item-fns/item_fns.o",
+    "file": "src/item-fns/item_fns.c"
+  },
+  {
+    "directory": "/Users/Leo/Code/inventory-manager-c",
+    "command": "clang -Wall -Wextra -std=c11 -g -I/Users/Leo/Code/inventory-manager-c/src -I/Users/Leo/Code/inventory-manager-c/src/item-fns -c src/item-fns/read_line.c -o build/item-fns/read_line.o",
+    "file": "src/item-fns/read_line.c"
+  }
+]
