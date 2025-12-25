@@ -70,6 +70,6 @@ Available commands:
 - **Debug info**: Enabled by default (`-g`)
 
 ## TODO
-[] Read into tree from input file  
-[] Write to output file  
-[] Write to SQLite database   
+[ ] Read into tree from input file  
+[ ] Write to output file  
+[ ] Write to SQLite database   
