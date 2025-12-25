@@ -68,3 +68,8 @@ Available commands:
 - **Standard**: C11
 - **Flags**: `-Wall -Wextra` for strict error checking
 - **Debug info**: Enabled by default (`-g`)
+
+## TODO
+[] Read into tree from input file
+[] Write to output file
+[] Write to SQLite database 
