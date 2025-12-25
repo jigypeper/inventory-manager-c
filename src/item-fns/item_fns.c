@@ -198,7 +198,6 @@ void print_item(item *root, int part_number) {
 }
 
 void print_items(item *root) {
-  //TODO: need to free the memory of the array after print completes?
   int array_length = 0;
   item **inventory = build_item_array(root, &array_length);
 
@@ -216,4 +215,5 @@ void print_items(item *root) {
   }
 
   printf("└───────────┴─────────────────────────┴────────┘\n");
+  free(inventory);
 }
