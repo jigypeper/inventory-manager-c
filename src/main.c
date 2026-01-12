@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "item-fns/item_fns.h"
+#include "commands/commands.h"
 
 int main(void) {
   printf("Welcome to your parts database\n");

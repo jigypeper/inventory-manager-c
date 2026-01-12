@@ -21,19 +21,5 @@ item *find_min(item *root);
 void in_order_collect(item *root, item ***address_array, int *index, int *capacity);
 item **build_item_array(item *root, int *array_length);
 
-// IDEA: should these be in a commands module?
-//-----------------------------
-item* insert_item(item *root);
-item* update_item(item *root);
-item *delete_item(item *root);
-void search_item(item *root, int part_number);
-void print_item(item *root, int part_number);
-void print_items(item *root);
-
-// impl import from csv's to start
-void import_items(void);
-void export_items(void);
-//-----------------------------
-
 
 #endif

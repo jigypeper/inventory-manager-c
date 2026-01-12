@@ -6,6 +6,7 @@ LDFLAGS =
 # Directories
 SRC_DIR = src
 ITEM_FNS_DIR = $(SRC_DIR)/item-fns
+COMMAND_FNS_DIR = $(SRC_DIR)/commands
 BUILD_DIR = build
 BIN_DIR = bin
 
@@ -15,6 +16,7 @@ TARGET = $(BIN_DIR)/inventory-manager
 # Source files
 SRCS = $(SRC_DIR)/main.c \
        $(ITEM_FNS_DIR)/item_fns.c \
+       $(COMMAND_FNS_DIR)/commands.c \
        $(ITEM_FNS_DIR)/read_line.c
 
 # Object files
@@ -24,7 +26,7 @@ OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 all: $(TARGET)
 
 # Create directories
-$(BUILD_DIR) $(BIN_DIR) $(BUILD_DIR)/item-fns:
+$(BUILD_DIR) $(BIN_DIR) $(BUILD_DIR)/item-fns $(BUILD_DIR)/commands:
 	mkdir -p $@
 
 # Link object files to create executable
@@ -33,7 +35,7 @@ $(TARGET): $(OBJS) | $(BIN_DIR)
 	@echo "Build complete: $(TARGET)"
 
 # Compile source files to object files
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR) $(BUILD_DIR)/item-fns
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR) $(BUILD_DIR)/item-fns $(BUILD_DIR)/commands
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Run the program
