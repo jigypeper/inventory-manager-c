@@ -10,7 +10,7 @@ item* update_item_name(item *root);
 item* update_item_qty(item *root);
 item *delete_item(item *root);
 void search_item(item *root, int part_number);
-void print_item(item *root, int part_number);
+void print_item(item *root);
 void print_items(item *root);
 
 // impl import from csv's to start

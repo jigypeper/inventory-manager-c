@@ -79,7 +79,10 @@ item* delete_item(item *root) {
   return root;
 }
 
-void print_item(item *root, int part_number) {
+void print_item(item *root) {
+  int part_number;
+  printf("part number: ");
+  scanf("%d", &part_number);
   item *result = search_item_node(root, part_number);
   if (result == NULL) {
     printf("Can't find item: %d\n", part_number);

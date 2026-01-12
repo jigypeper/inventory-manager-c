@@ -7,7 +7,6 @@ int main(void) {
   printf("Welcome to your parts database\n");
   char command;
   item *root = NULL;
-  int part_number;
 
   // TODO: Abstract switch case to an array of function pointers
   // user chooses a number and this indexes to array and runs functions,
@@ -31,9 +30,7 @@ int main(void) {
         break;
       case 'p':
       case 'P':
-        printf("part number: ");
-        scanf("%d", &part_number);
-        print_item(root, part_number);
+        print_item(root);
         break;
       case 'l':
       case 'L':
