@@ -11,6 +11,7 @@ int main(void) {
   // TODO: Abstract switch case to an array of function pointers
   // user chooses a number and this indexes to array and runs functions,
   // might make the update options later on more ergonomic.
+  // NOTE: all command functions will need same signature and return
 
   while (true) {
     printf("Choose an option\ni: insert a part\nu: update a part\nd: delete a part\np: print a part\nl: list all parts\nq: quit\n");
