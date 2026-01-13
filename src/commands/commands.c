@@ -79,7 +79,7 @@ item* delete_item(item *root) {
   return root;
 }
 
-void print_item(item *root) {
+item* print_item(item *root) {
   int part_number;
   printf("part number: ");
   scanf("%d", &part_number);
@@ -93,15 +93,16 @@ void print_item(item *root) {
     printf("│ %-9d │ %-23s │ %-6d │\n", result->part_number, result->part_name, result->qty);
     printf("└───────────┴─────────────────────────┴────────┘\n");
   }
+  return root;
 }
 
-void print_items(item *root) {
+item* print_items(item *root) {
   int array_length = 0;
   item **inventory = build_item_array(root, &array_length);
 
   if (array_length == 0) {
     printf("No items in the database! Please add some\n");
-	return;
+	return root;
   }
 
   printf("┌───────────┬─────────────────────────┬────────┐\n");
@@ -114,4 +115,5 @@ void print_items(item *root) {
 
   printf("└───────────┴─────────────────────────┴────────┘\n");
   free(inventory);
+  return root;
 }
