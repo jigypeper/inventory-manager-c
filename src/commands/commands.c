@@ -32,6 +32,7 @@ if (search_item_node(root, part->part_number) == NULL){
 item* update_item(item *root) {
   item* existing_part = NULL;
   int part_number, new_part_number, new_qty;
+  char choice;
   char new_part_name[NAME_LEN];
 
   printf("Which part do you want to update? [part no.]: ");
@@ -40,18 +41,45 @@ item* update_item(item *root) {
 
   if (existing_part != NULL) {
 
-    printf("Part no.: ");
-    scanf("%d", &new_part_number);
+    printf("Choose an option\na: Update all fields\np: Update part number\nn: "
+           "Update part name\nq: Update quantity\n");
+    scanf(" %c", &choice);
 
-    printf("New Part name: ");
-    read_line(new_part_name, NAME_LEN);
+    switch (choice) {
+      case 'a':
+      case 'A':
+        printf("Part no.: ");
+        scanf("%d", &new_part_number);
 
-    printf("Quantity: ");
-    scanf("%d", &new_qty);
+        printf("New Part name: ");
+        read_line(new_part_name, NAME_LEN);
 
-    strcpy(existing_part->part_name, new_part_name);
-    existing_part->part_number = new_part_number;
-    existing_part->qty = new_qty;
+        printf("Quantity: ");
+        scanf("%d", &new_qty);
+
+        strcpy(existing_part->part_name, new_part_name);
+        existing_part->part_number = new_part_number;
+        existing_part->qty = new_qty;
+        break;
+      case 'p':
+      case 'P':
+        printf("Part no.: ");
+        scanf("%d", &new_part_number);
+        existing_part->part_number = new_part_number;
+        break;
+      case 'n':
+      case 'N':
+        printf("New Part name: ");
+        read_line(new_part_name, NAME_LEN);
+        strcpy(existing_part->part_name, new_part_name);
+        break;
+      case 'q':
+      case 'Q':
+        printf("Quantity: ");
+        scanf("%d", &new_qty);
+        existing_part->qty = new_qty;
+        break;
+    }
 
     return root;
   }
