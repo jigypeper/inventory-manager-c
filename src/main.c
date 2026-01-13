@@ -5,8 +5,16 @@
 
 int main(void) {
   printf("Welcome to your parts database\n");
-  char command;
+  int command;
   item *root = NULL;
+
+  item* (*commands[5])(item *root) = {
+    *insert_item,
+    *update_item,
+    *delete_item,
+    *print_item,
+    *print_items
+  };
 
   // TODO: Abstract switch case to an array of function pointers
   // user chooses a number and this indexes to array and runs functions,
@@ -14,37 +22,17 @@ int main(void) {
   // NOTE: all command functions will need same signature and return
 
   while (true) {
-    printf("Choose an option\ni: insert a part\nu: update a part\nd: delete a part\np: print a part\nl: list all parts\nq: quit\n");
-    scanf(" %c", &command);
-    switch (command) {
-      case 'i':
-      case 'I':
-        root = insert_item(root);
-        break;
-      case 'u':
-      case 'U':
-        root = update_item(root);
-        break;
-      case 'd':
-      case 'D':
-        root = delete_item(root);
-        break;
-      case 'p':
-      case 'P':
-        print_item(root);
-        break;
-      case 'l':
-      case 'L':
-        print_items(root);
-		break;
-      case 'q':
-      case 'Q':
-        return 0;
-        break;
-      default:
-        printf("\'%c\' is not a valid option\n", command);
-        break;
+    printf("Choose an option\n0: insert a part\n1: update a part\n2: delete a part\n3: print a part\n4: list all parts\n5: quit\n");
+    scanf("%d", &command);
+    if (command < 0 || command > 5) {
+      printf("\'%d\' is not a valid option\n", command);
     }
+    
+    if (command == 5) {
+      return 0;
+    }
+    
+    root = commands[command](root);
   }
 
   return 0;
