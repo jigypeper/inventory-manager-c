@@ -1,6 +1,6 @@
 #include "commands.h"
 #include <stdio.h>
-#include "../item-fns/read_line.h"
+#include "read_line.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -28,7 +28,6 @@ if (search_item_node(root, part->part_number) == NULL){
   return root;
 }
 
-//TODO: need to think of the best way to handle updates, should the user be able to choose what they want to update before giving the options? Or do we check for which items have been populated?
 item* update_item(item *root) {
   item* existing_part = NULL;
   int part_number, new_part_number, new_qty;

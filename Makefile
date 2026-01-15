@@ -17,7 +17,7 @@ TARGET = $(BIN_DIR)/inventory-manager
 SRCS = $(SRC_DIR)/main.c \
        $(ITEM_FNS_DIR)/item_fns.c \
        $(COMMAND_FNS_DIR)/commands.c \
-       $(ITEM_FNS_DIR)/read_line.c
+       $(COMMAND_FNS_DIR)/read_line.c
 
 # Object files
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

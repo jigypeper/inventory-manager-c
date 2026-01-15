@@ -40,12 +40,12 @@ Run the program:
 ```
 
 Available commands:
-- `i` - Insert a new part
-- `u` - Update an existing part
-- `d` - Delete a part
-- `p` - Print/view a specific part
-- `l` - List all parts
-- `q` - Quit
+- `0` - Insert a new part
+- `1` - Update an existing part
+- `2` - Delete a part
+- `3` - Print/view a specific part
+- `4` - List all parts
+- `5` - Quit
 
 ## Project Structure
 
@@ -55,11 +55,15 @@ Available commands:
 ├── README.md             # This file
 └── src/
     ├── main.c            # Main program and CLI interface
-    └── item-fns/
-        ├── item_fns.c    # Item operations (insert, update, delete, search)
-        ├── item_fns.h    # Item function declarations
+    ├── item-fns/
+    │   ├── item_fns.c    # Item operations (insert, update, delete, search)
+    │   └── item_fns.h    # Item function declarations
+    └── commands/
         ├── read_line.c   # Input reading utilities
-        └── read_line.h   # Input reading declarations
+        ├── read_line.h   # Input reading declarations
+        ├── commands.c    # User commands
+        └── commands.h    # User command declerations
+    
 ```
 
 ## Compilation Details
