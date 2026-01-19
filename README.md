@@ -76,4 +76,5 @@ Available commands:
 ## TODO
 - [ ] Read into tree from input file  
 - [ ] Write to output file  
-- [ ] Write to SQLite database   
+- [ ] Write to SQLite database  
+- [ ] Add error handling for data entry  
