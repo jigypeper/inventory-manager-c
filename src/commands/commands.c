@@ -144,3 +144,28 @@ item* print_items(item *root) {
   free(inventory);
   return root;
 }
+
+item* export_items(item *root) {
+  int array_length = 0;
+  item **inventory = build_item_array(root, &array_length);
+  
+  if (array_length == 0) {
+    printf("No items in the database! Please add some\n");
+    return root;
+  }
+
+  FILE *data_file = fopen("inventory.csv", "w");
+
+  if (data_file == NULL) {
+    perror("Error opening data file\n");
+    return root;
+  }
+
+  for (int i = 0; i < array_length; i++) {
+    fprintf(data_file, "%d,%s,%d\n", inventory[i]->part_number, inventory[i]->part_name, inventory[i]->qty);
+  }
+
+  fclose(data_file);
+  return root;
+
+}
