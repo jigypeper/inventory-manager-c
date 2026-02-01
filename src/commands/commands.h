@@ -1,5 +1,6 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
+#define MAXCHAR 1024
 
 #include "../item-fns/item_fns.h"
 
