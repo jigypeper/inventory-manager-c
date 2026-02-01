@@ -145,6 +145,30 @@ item* print_items(item *root) {
   return root;
 }
 
+/* TODO: Read into BST */
+item* import_items(item *root) {
+  FILE *data_file = fopen("inventory.csv", "r");
+
+  if (data_file == NULL) {
+    printf("Error opening data file\n");
+    return root;
+  }
+
+  char line[MAXCHAR];
+
+  while (fgets(line, sizeof(line), data_file)) {
+    char *token = strtok(line, ",");
+    while (token != NULL) {
+      printf("Field: %s\n", token);
+      token = strtok(NULL, ",");
+    }
+  } 
+
+
+  fclose(data_file);
+  return root;
+}
+
 item* export_items(item *root) {
   int array_length = 0;
   item **inventory = build_item_array(root, &array_length);
@@ -157,7 +181,7 @@ item* export_items(item *root) {
   FILE *data_file = fopen("inventory.csv", "w");
 
   if (data_file == NULL) {
-    perror("Error opening data file\n");
+    printf("Error opening data file\n");
     return root;
   }
 
