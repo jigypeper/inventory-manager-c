@@ -17,11 +17,6 @@ int main(void) {
     *export_items,
   };
 
-  // TODO: Abstract switch case to an array of function pointers
-  // user chooses a number and this indexes to array and runs functions,
-  // might make the update options later on more ergonomic.
-  // NOTE: all command functions will need same signature and return
-
   while (true) {
     printf("Choose an option\n0: insert a part\n1: update a part\n2: delete a part\n3: print a part\n4: list all parts\n5:Export parts to CSV\n6: quit\n");
     scanf("%d", &command);
