@@ -14,7 +14,7 @@ item* print_item(item *root);
 item* print_items(item *root);
 
 // impl import from csv's to start
-void import_items(void);
+item* import_items(item *root);
 item* export_items(item *root);
 
 #endif
