@@ -154,17 +154,23 @@ item* import_items(item *root) {
     return root;
   }
 
+
   char line[MAXCHAR];
 
   while (fgets(line, sizeof(line), data_file)) {
+    item new;
+
     char *token = strtok(line, ",");
-    while (token != NULL) {
-      printf("Field: %s\n", token);
-      token = strtok(NULL, ",");
-    }
-  } 
+    if (token) new.part_number = atoi(token);
 
+    token = strtok(NULL, ",");
+    if (token) strcpy(new.part_name, token);
+    
+    token = strtok(NULL, ",");
+    if (token) new.qty = atoi(token);
 
+    root = insert_item_node(root, &new);
+  }
   fclose(data_file);
   return root;
 }
