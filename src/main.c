@@ -8,9 +8,9 @@ main (void)
 {
   printf ("Welcome to your parts database\n");
   int command;
-  item *root = NULL;
+  item_t *root = NULL;
 
-  item *(*commands[7]) (item *root) = {
+  item_t *(*commands[7]) (item_t *root) = {
     *insert_item, *update_item,  *delete_item,  *print_item,
     *print_items, *import_items, *export_items,
   };

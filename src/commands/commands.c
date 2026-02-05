@@ -1,13 +1,14 @@
 #include "commands.h"
+#include "../item-fns/item_fns.h"
 #include "read_line.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-item *
-insert_item (item *root)
+item_t *
+insert_item (item_t *root)
 {
-  item *part = malloc (sizeof (item));
+  item_t *part = malloc (sizeof (item_t));
 
   printf ("Part no.: ");
   scanf ("%d", &part->part_number);
@@ -33,10 +34,10 @@ insert_item (item *root)
   return root;
 }
 
-item *
-update_item (item *root)
+item_t *
+update_item (item_t *root)
 {
-  item *existing_part = NULL;
+  item_t *existing_part = NULL;
   int part_number, new_part_number, new_qty;
   char choice;
   char new_part_name[NAME_LEN];
@@ -98,10 +99,10 @@ update_item (item *root)
   return root;
 }
 
-item *
-delete_item (item *root)
+item_t *
+delete_item (item_t *root)
 {
-  item *existing_part = NULL;
+  item_t *existing_part = NULL;
   int part_number;
 
   printf ("Which part do you want to delete? [part no.]: ");
@@ -121,13 +122,13 @@ delete_item (item *root)
   return root;
 }
 
-item *
-print_item (item *root)
+item_t *
+print_item (item_t *root)
 {
   int part_number;
   printf ("part number: ");
   scanf ("%d", &part_number);
-  item *result = search_item_node (root, part_number);
+  item_t *result = search_item_node (root, part_number);
   if (result == NULL)
     {
       printf ("Can't find item: %d\n", part_number);
@@ -144,11 +145,11 @@ print_item (item *root)
   return root;
 }
 
-item *
-print_items (item *root)
+item_t *
+print_items (item_t *root)
 {
   int array_length = 0;
-  item **inventory = build_item_array (root, &array_length);
+  item_t **inventory = build_item_array (root, &array_length);
 
   if (array_length == 0)
     {
@@ -172,8 +173,8 @@ print_items (item *root)
 }
 
 /* TODO: Read into BST */
-item *
-import_items (item *root)
+item_t *
+import_items (item_t *root)
 {
   FILE *data_file = fopen ("inventory.csv", "r");
 
@@ -187,7 +188,7 @@ import_items (item *root)
 
   while (fgets (line, sizeof (line), data_file))
     {
-      item new;
+      item_t new;
 
       char *token = strtok (line, ",");
       if (token)
@@ -207,11 +208,11 @@ import_items (item *root)
   return root;
 }
 
-item *
-export_items (item *root)
+item_t *
+export_items (item_t *root)
 {
   int array_length = 0;
-  item **inventory = build_item_array (root, &array_length);
+  item_t **inventory = build_item_array (root, &array_length);
 
   if (array_length == 0)
     {

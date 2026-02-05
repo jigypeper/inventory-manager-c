@@ -3,13 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-item *
-create_item_node (item *part)
+item_t *
+create_item_node (item_t *part)
 {
-  item *new_part = (item *)malloc (sizeof (item));
+  item_t *new_part = (item_t *)malloc (sizeof (item_t));
   if (new_part != NULL)
     {
-      new_part = (item *)malloc (sizeof (item));
+      new_part = (item_t *)malloc (sizeof (item_t));
       new_part->left_part = NULL;
       new_part->right_part = NULL;
       new_part->part_number = part->part_number;
@@ -19,8 +19,8 @@ create_item_node (item *part)
   return new_part;
 }
 
-item *
-insert_item_node (item *root, item *part)
+item_t *
+insert_item_node (item_t *root, item_t *part)
 {
   if (root == NULL)
     {
@@ -38,8 +38,8 @@ insert_item_node (item *root, item *part)
   return root;
 }
 
-item *
-search_item_node (item *root, int part_number)
+item_t *
+search_item_node (item_t *root, int part_number)
 {
   if (root == NULL)
     {
@@ -60,8 +60,8 @@ search_item_node (item *root, int part_number)
     }
 }
 
-item *
-find_min (item *root)
+item_t *
+find_min (item_t *root)
 {
   if (root == NULL || root->left_part == NULL)
     {
@@ -70,8 +70,8 @@ find_min (item *root)
   return find_min (root->left_part);
 }
 
-item *
-delete_item_node (item *root, int part_number)
+item_t *
+delete_item_node (item_t *root, int part_number)
 {
   if (root == NULL)
     {
@@ -90,19 +90,19 @@ delete_item_node (item *root, int part_number)
     {
       if (root->left_part == NULL)
         {
-          item *temp = root->right_part;
+          item_t *temp = root->right_part;
           free (root);
           return temp;
         }
       else if (root->right_part == NULL)
         {
-          item *temp = root->left_part;
+          item_t *temp = root->left_part;
           free (root);
           return temp;
         }
       else
         {
-          item *successor = find_min (root->right_part);
+          item_t *successor = find_min (root->right_part);
           root->part_number = successor->part_number;
           root->qty = successor->qty;
           strcpy (root->part_name, successor->part_name);
@@ -115,7 +115,7 @@ delete_item_node (item *root, int part_number)
 }
 
 void
-in_order_collect (item *root, item ***address_array, int *index, int *capacity)
+in_order_collect (item_t *root, item_t ***address_array, int *index, int *capacity)
 {
   if (root == NULL)
     {
@@ -125,8 +125,8 @@ in_order_collect (item *root, item ***address_array, int *index, int *capacity)
   if (*index >= *capacity)
     {
       *capacity *= 2;
-      item **temp
-          = (item **)realloc (*address_array, *capacity * sizeof (item *));
+      item_t **temp
+          = (item_t **)realloc (*address_array, *capacity * sizeof (item_t *));
       *address_array = temp;
     }
 
@@ -135,11 +135,11 @@ in_order_collect (item *root, item ***address_array, int *index, int *capacity)
   in_order_collect (root->right_part, address_array, index, capacity);
 }
 
-item **
-build_item_array (item *root, int *array_length)
+item_t **
+build_item_array (item_t *root, int *array_length)
 {
   int count = 0, capacity = 10;
-  item **item_array = (item **)malloc (capacity * sizeof (item *));
+  item_t **item_array = (item_t **)malloc (capacity * sizeof (item_t *));
 
   in_order_collect (root, &item_array, &count, &capacity);
   *array_length = count;

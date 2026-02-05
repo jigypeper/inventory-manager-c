@@ -12,15 +12,15 @@ typedef struct item
   int qty;
   struct item *left_part;
   struct item *right_part;
-} item;
+} item_t;
 
-item *create_item_node (item *part);
-item *insert_item_node (item *root, item *part);
-item *delete_item_node (item *root, int part_number);
-item *search_item_node (item *root, int part_number);
-item *find_min (item *root);
-void in_order_collect (item *root, item ***address_array, int *index,
+item_t *create_item_node (item_t *part);
+item_t *insert_item_node (item_t *root, item_t *part);
+item_t *delete_item_node (item_t *root, int part_number);
+item_t *search_item_node (item_t *root, int part_number);
+item_t *find_min (item_t *root);
+void in_order_collect (item_t *root, item_t ***address_array, int *index,
                        int *capacity);
-item **build_item_array (item *root, int *array_length);
+item_t **build_item_array (item_t *root, int *array_length);
 
 #endif
