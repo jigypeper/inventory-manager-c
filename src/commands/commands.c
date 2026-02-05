@@ -150,7 +150,6 @@ item_t *print_items(item_t *root) {
   return root;
 }
 
-/* TODO: Read into BST */
 item_t *import_items(item_t *root) {
   FILE *data_file = fopen("inventory.csv", "r");
 
