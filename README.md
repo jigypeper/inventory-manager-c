@@ -45,7 +45,9 @@ Available commands:
 - `2` - Delete a part
 - `3` - Print/view a specific part
 - `4` - List all parts
-- `5` - Quit
+- `5` - Import CSV
+- `6` - Export parts to CSV
+- `7` - Quit
 
 ## Project Structure
 
