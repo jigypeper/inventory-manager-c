@@ -2,23 +2,19 @@
 #include <ctype.h>
 #include <stdio.h>
 
-int
-read_line (char str[], int n)
-{
+int read_line(char str[], int n) {
   int ch, i = 0;
   // clearing any leading spaces
-  while (isspace (ch = getchar ()))
+  while (isspace(ch = getchar()))
     ;
 
   // reading until spaces and EOF
-  while (ch != '\n' && ch != ' ' && ch != EOF)
-    {
-      if (i < n)
-        {
-          str[i++] = ch;
-        }
-      ch = getchar ();
+  while (ch != '\n' && ch != ' ' && ch != EOF) {
+    if (i < n) {
+      str[i++] = ch;
     }
+    ch = getchar();
+  }
   str[i] = '\0';
   return i;
 }
