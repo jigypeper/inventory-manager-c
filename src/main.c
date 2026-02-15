@@ -17,7 +17,12 @@ int main(void) {
     printf("Choose an option\n0: insert a part\n1: update a part\n2: "
            "delete a part\n3: print a part\n4: list all parts\n5: Import "
            "CSV\n6:Export parts to CSV\n7: quit\n");
-    scanf("%d", &command);
+    
+    while (scanf("%d", &command) != 1) {
+      while (getchar() != '\n');
+      printf("Invalid input, please enter a number:\n");
+    }
+    
     if (command < 0 || command > 7) {
       printf("\'%d\' is not a valid option\n", command);
     }
