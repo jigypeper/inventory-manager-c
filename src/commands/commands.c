@@ -165,7 +165,7 @@ item_t *import_items(item_t *root) {
 
     char *token = strtok(line, ",");
     if (token)
-      new.part_number = atoi(token);
+      new.part_number = strtol(token, NULL, 0);
 
     token = strtok(NULL, ",");
     if (token)
@@ -173,7 +173,7 @@ item_t *import_items(item_t *root) {
 
     token = strtok(NULL, ",");
     if (token)
-      new.qty = atoi(token);
+      new.qty = strtol(token, NULL, 0);
 
     root = insert_item_node(root, &new);
   }
