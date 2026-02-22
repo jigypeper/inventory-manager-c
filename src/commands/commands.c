@@ -154,7 +154,8 @@ item_t *import_items(item_t *root) {
   FILE *data_file = fopen("inventory.csv", "r");
 
   if (data_file == NULL) {
-    printf("Error opening data file\n");
+    printf("Error opening data file\n"
+           "Does inventory.csv exist?\n");
     return root;
   }
 
